@@ -42,9 +42,10 @@
 
 <script>
 import { ref } from "vue";
-
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    const router = useRouter();
     const name = ref("");
     const email = ref("");
     const address = ref("");
@@ -64,7 +65,10 @@ export default {
       });
 
       if (response.ok) {
-        console.log(response);
+        router.push({
+          name: "Home"
+        });
+        console.log(response.ok);
       } else {
         //show an error
       }

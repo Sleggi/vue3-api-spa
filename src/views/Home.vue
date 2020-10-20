@@ -3,7 +3,6 @@
     <router-link :to="{ name: 'Create' }" class="button is-success mx-5 my-5">
       Add User
     </router-link>
-
     <Users />
   </div>
 </template>
