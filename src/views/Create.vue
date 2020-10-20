@@ -13,25 +13,25 @@
     </div>
 
     <div class="field">
-      <label class="label">Email</label>
+      <label class="label">Username</label>
       <div class="control">
         <input
           class="input"
-          type="email"
-          placeholder="e.g. alexsmith@gmail.com"
-          v-model="email"
+          type="text"
+          placeholder="e.g. Antonette"
+          v-model="username"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Address</label>
+      <label class="label">Email</label>
       <div class="control">
         <input
           class="input"
-          type="text"
-          placeholder="e.g. Gwenborough, Kulas Light, Apt. 556"
-          v-model="address"
+          type="email"
+          placeholder="e.g. alexsmith@gmail.com "
+          v-model="email"
         />
       </div>
     </div>
@@ -47,10 +47,10 @@ export default {
   setup() {
     const router = useRouter();
     const name = ref("");
+    const username = ref("");
     const email = ref("");
-    const address = ref("");
 
-    const API_URL = "https://jsonplaceholder.typicode.com/users";
+    const API_URL = "http://localhost:3000/users";
     async function createUser() {
       const response = await fetch(API_URL, {
         method: "POST",
@@ -59,16 +59,18 @@ export default {
         },
         body: JSON.stringify({
           name: name.value,
-          email: email.value,
-          address: address.value
+          username: username.value,
+          email: email.value
         })
       });
+
+      const json = await response.json();
+      console.log(json);
 
       if (response.ok) {
         router.push({
           name: "Home"
         });
-        console.log(response.ok);
       } else {
         //show an error
       }
@@ -77,7 +79,7 @@ export default {
       createUser,
       name,
       email,
-      address
+      username
     };
   }
 };
