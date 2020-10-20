@@ -1,49 +1,17 @@
 <template>
-  <form @submit.prevent="createUser">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="e.g Alex Smith"
-          v-model="name"
-        />
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Username</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="e.g. Antonette"
-          v-model="username"
-        />
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
-        <input
-          class="input"
-          type="email"
-          placeholder="e.g. alexsmith@gmail.com "
-          v-model="email"
-        />
-      </div>
-    </div>
-    <button class="button is-success" type="submit">Create User</button>
-  </form>
+  <UserForm :user="user" :submitForm="createUser" />
 </template>
 
 
 <script>
+import UserForm from "../components/UserForm";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+
 export default {
+  components: {
+    UserForm
+  },
   setup() {
     const router = useRouter();
     const name = ref("");
@@ -76,10 +44,12 @@ export default {
       }
     }
     return {
-      createUser,
-      name,
-      email,
-      username
+      user: {
+        name,
+        email,
+        username
+      },
+      createUser
     };
   }
 };
