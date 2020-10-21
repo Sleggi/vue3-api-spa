@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import Create from "@/views/Create.vue";
 import Update from "@/views/Update.vue";
-
+import NotFound from "@/views/NotFound.vue";
 
 const routes = [
   {
@@ -19,6 +19,10 @@ const routes = [
     path: "/update/:id",
     name: "Update",
     component: Update
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFound
   }
 ];
 
