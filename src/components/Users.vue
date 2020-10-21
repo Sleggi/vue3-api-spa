@@ -25,19 +25,14 @@
 
 
 <script>
-import { ref } from "vue";
 import { useRouter } from "vue-router";
+import useUsers from "../hooks/useUsers";
+import API_URL from "../API_URL";
 
 export default {
   setup() {
     const router = useRouter();
-    const users = ref([]);
-    const API_URL = "http://localhost:3000/users";
-    async function getUsers() {
-      const data = await fetch(API_URL);
-      const json = await data.json();
-      users.value = json;
-    }
+    const { users, getUsers } = useUsers();
 
     async function removeUser(id) {
       await fetch(`${API_URL}/${id}`, {
