@@ -44,11 +44,7 @@
 import { toRefs } from "vue";
 export default {
   props: {
-    user: {
-      name: String,
-      email: String,
-      username: String
-    },
+    user: Object,
     submitForm: Function
   },
   setup(props) {

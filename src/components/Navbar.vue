@@ -1,13 +1,8 @@
 <template>
   <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        Info
-      </a>
+      <router-link class="navbar-item" :to="{ name: 'Home' }">Home</router-link>
     </div>
   </nav>
 </template>
 
-<script>
-export default {};
-</script>

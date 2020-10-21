@@ -1,12 +1,12 @@
 <template>
-  <UserForm :user="user" :submitForm="createUser" />
+  <UserForm :user="user" :submitForm="updateUser" />
 </template>
 
 
 <script>
 import UserForm from "../components/UserForm";
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 export default {
   components: {
@@ -14,6 +14,9 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const {
+      params: { id }
+    } = useRoute();
     const user = ref({
       name: "",
       username: "",
@@ -21,9 +24,9 @@ export default {
     });
 
     const API_URL = "http://localhost:3000/users";
-    async function createUser() {
-      const response = await fetch(API_URL, {
-        method: "POST",
+    async function updateUser() {
+      const response = await fetch(`${API_URL}/${id}`, {
+        method: "PUT",
         headers: {
           "content-type": "application/json"
         },
@@ -34,9 +37,6 @@ export default {
         })
       });
 
-      const json = await response.json();
-      console.log(json);
-
       if (response.ok) {
         router.push({
           name: "Home"
@@ -45,9 +45,19 @@ export default {
         //show an error
       }
     }
+
+    async function getCurrentUser() {
+      const response = await fetch(`${API_URL}/${id}`);
+      const json = await response.json();
+      user.value.name = json.name;
+      user.value.email = json.email;
+      user.value.username = json.username;
+    }
+    getCurrentUser();
+
     return {
       user,
-      createUser
+      updateUser
     };
   }
 };
