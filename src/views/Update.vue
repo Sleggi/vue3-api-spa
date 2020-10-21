@@ -1,5 +1,9 @@
 <template>
-  <UserForm :user="user" :submitForm="updateUser" />
+  <UserForm :user="user" :submitForm="updateUser">
+    <template #button>
+      Update
+    </template>
+  </UserForm>
 </template>
 
 

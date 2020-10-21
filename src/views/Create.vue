@@ -1,5 +1,9 @@
 <template>
-  <UserForm :user="user" :submitForm="createUser" />
+  <UserForm :user="user" :submitForm="createUser">
+    <template #button>
+      Create
+    </template>
+  </UserForm>
 </template>
 
 

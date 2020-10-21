@@ -35,7 +35,9 @@
         />
       </div>
     </div>
-    <button class="button is-success" type="submit">Create User</button>
+    <button class="button is-success" type="submit">
+      <slot name="button"></slot>
+    </button>
   </form>
 </template>
 
