@@ -1,24 +1,9 @@
-# vue3-api-spa
+### VUE3 - spa
+Created it to learn more about Vue 3 Composition API
+#### technologies used in this project - html, css, bulma, vue 3 composition api, vue-router, json-server for mocking rest api
+##### functionality: 
+1. Interaction with the API
+2. add and remove users
+3. edit users
+4. redirection with vue-router
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
